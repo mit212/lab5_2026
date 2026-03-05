@@ -164,6 +164,10 @@ Some (but not all) necessary changes:
 - Comment out line 17 `#define BNO08X_RESET -1` and uncomment line 15 `#define BNO08X_RESET 5`
 - Comment out line 52 `if (!bno08x.begin_I2C()) {` and uncomment line 54 `if (!bno08x.begin_SPI(BNO08X_CS, BNO08X_INT)) {`
 
+| :white_check_mark: CHECKOFF 1 :white_check_mark:   |
+|:---------------------------------------------------|
+| Demonstrate your potentiometer, button, ToF, and IMU sensors to a TA or LA. |
+
 ## 3 Sensor-controlled Motor 
 Estimated time of completion: 15 min
 
@@ -188,30 +192,34 @@ You are free to use any sensor you want. You can even use multiple sensors! Cons
 If your control effort looks like it's 100 digits long, comment out any `delay` calls in the `loop` function. The `delay` might be messing with the timing of `EVERY_N_MICROS`.
 </details>
 
-| :white_check_mark: CHECKOFF 1 :white_check_mark:   |
+| :white_check_mark: CHECKOFF 2 :white_check_mark:   |
 |:---------------------------------------------------|
 | Demonstrate your new `test_code/motor_position_control.cpp` to a TA or LA. |
 
-## 4 Free Exploration
+| :white_check_mark: CHECKOFF Clean Up :white_check_mark:   |
+|:---------------------------------------------------|
+| Clean up and return your station to it's configuration from the start of lab. Show a TA or LA. If you do not clean up you will be deducted one checkoff. |
+
+## X (Extra Credit) Free Exploration
 Estimated time of completion: now until the end of lab
 
 The next two subsections are purposefully open-ended to encourage exploration. You are welcome to do either, both, or something completely different!  (We have random sensors in the bin.) Again, consider doing something you think will be useful for the final project. You will demonstrate to the staff what you have made in the last 10-15 minutes of lab.
 
-## 4.1 Wireless Communication
+## X.1 Wireless Communication
 
 Upto now, we've only used wired communications. What happens if we want to control the mobile robot via joystick for the final project? Clearly, the joystick can't also be physically attached to the mobile robot. The microcontrollers we are using can communicate to each other via WiFi. 
 
-### 4.1.1 Wiring
+### X.1.1 Wiring
 
 You first need to divide your setup into a *sender* and a *receiver*. In our case, the *sender* should be connected to your chosen sensor, while the *receiver* should be connected to the motor. Ask the staff for any necessary parts and rewire your setup.
 
-### 4.1.2 Coding
+### X.1.2 Coding
 
 Run `get_mac.cpp` on the *receiver* to get the MAC address of the *receiver* microcontroller. Then, replace `broadcastAddress` in `wireless/esp_now_sender.cpp` to be that MAC address. Run `wireless/esp_now_sender.cpp` on the *sender* and `wireless/esp_now_receiver.cpp` on the *receiver*. Keep the *receiver* connected to your machine and open the Serial Monitor. 
 
 Confirm that the data received, as printed on the Serial Monitor, is reasonable given the data sent. Hint: Refer to lines `60` to `63` in `wireless/esp_now_sender.cpp` to see what data is being sent.
 
-### 4.1.3 Wireless Sensor-controlled Motor 
+### X.1.3 Wireless Sensor-controlled Motor 
 
 Copy `wireless/esp_now_sender.cpp` to `lab_code/sensor_sender.cpp` and `wireless/esp_now_receiver.cpp` to `lab_code/robot_receiver.cpp`. 
 
@@ -219,32 +227,28 @@ Then, modify the newly copied code so that the *sender* reads and sends sensor d
 
 If you get stuck, refer to this [tutorial](https://randomnerdtutorials.com/esp-now-esp32-arduino-ide/) or ask the staff for help!
 
-## 4.2 TFT Display
+## X.2 TFT Display
 
 Up to now, we've conducted all our validation tests by printing to the Serial Monitor. This requires constant wired connection to your machine, which isn't always ideal. For example, you might want to troubleshoot sensors on your mobile robot as it is moving! In some cases, it is more convenient to instead use a TFT display.
 
-### 4.2.1 Wiring
+### X.2.1 Wiring
 
 Ask the staff for a TFT display and wire it onto your breadboard using [this Adafruit page](https://learn.adafruit.com/adafruit-3-5-color-320x480-tft-touchscreen-breakout/spi-wiring-and-test) as reference. If you did the wireless setup, wire the display to the *sender*. Or, if your breadboard is too crowded, ask the staff for another microcontroller and breadboard. Remember to validate the new microcontroller by first running `robot/blink_test.cpp`.
 
-### 4.2.2 Coding
+### X.2.2 Coding
 
 Import the `Adafruit_HX8357` library and copy the example code into `test_code/display_test.cpp`. Run `test_code/display_test.cpp` to show text and shapes on your display. 
 
-### 4.2.3 Sensor Integration
+### X.2.3 Sensor Integration
 
 Choose a sensor whose readings will be printed on the display. If you are using a new microcontroller and breadboard, rewire your chosen sensor on the new breadboard and revalidate it first using the test code you wrote in `test_sensors/`.
 
 In `lab_code/display_sensor.cpp`, combine `test_code/display_test.cpp` and the test code you wrote in `test_sensors/` to print sensor readings to the display instead of the Serial Monitor. You may find the implementation of `testText()` in `test_code/display_test.cpp` helpful.
 
 
-| :white_check_mark: CHECKOFF 2 :white_check_mark:   |
+| :white_check_mark: CHECKOFF X :white_check_mark:   |
 |:---------------------------------------------------|
 | Show your chosen mini-project to a TA or LA. |
-
-| :white_check_mark: CHECKOFF 3 :white_check_mark:   |
-|:---------------------------------------------------|
-| Clean up and return your station to it's configuration from the start of lab. Show a TA or LA. |
 
 [^1]: Version 1 - 2024: Joseph Ntaimo, Jinger Chong, Josh Sohn  
 Version 2 - 2025: Roberto Bolli, Kaleb Blake
