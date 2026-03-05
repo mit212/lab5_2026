@@ -119,8 +119,7 @@ _**How do I import a library in PlatformIO?**_
 8. Paste the text you copied under the `TODO`, in the `lib_deps` section of `[env]`. 
 9. Save the file. You should see PlatformIO reprocess the imported libraries.
 
-<details>
-  <summary><i>Where do I find demo code?</i></summary>
+_**Where do I find demo code?**_
 
  1. Navigate back to the `Bounce2` library in the PlatformIO "PIO Home" tab.
  2. You can select an example from the dropdown. For the button, we will use `bounce_basic`.
@@ -130,8 +129,6 @@ _**How do I import a library in PlatformIO?**_
 
  3. Copy the code into `test_sensors/button_test.cpp`.
  4. Modify the code to also print a message to the Serial port whenever the button is pressed.
-
-</details>
 
 ### 2.3 Time-of-Flight
 
